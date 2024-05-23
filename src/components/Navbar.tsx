@@ -9,7 +9,7 @@ import RefetchButton from "./buttons/RefetchButton";
 
 export default function Navigation() {
   return (
-    <Navbar>
+    <Navbar className="h-[10dvh]">
       <NavbarContent>
         <NavbarBrand>
           <p className="font-bold text-inherit uppercase">Star Wars</p>
