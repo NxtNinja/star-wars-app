@@ -44,7 +44,7 @@ const HeroCard = ({ info }: { info: Hero }) => {
   if (isFetched && isSuccess) {
     return (
       <>
-        <Card className="w-[400px] max-h-[600px]">
+        <Card className="w-[400px] max-h-[480px] md:max-h-[600px]">
           <CardHeader className="flex gap-3">
             <div className="flex flex-col">
               <p className="text-3xl font-bold">{info.name}</p>
