@@ -26,7 +26,7 @@ const DisplayCharacter = () => {
     } else {
       setLoad(false);
     }
-  }, [isLoading, isFetching]);
+  }, [isLoading, isFetching, load]);
 
   if (isFetching || isLoading) {
     return (
