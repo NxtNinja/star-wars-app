@@ -1,26 +1,17 @@
 import { LoadingAtom } from "@/utils/atoms/LoadingAtom";
-import { Hero } from "@/utils/types/CharacterType";
 import { Spinner } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import HeroCard from "./HeroCard";
+import { fetchCharacter } from "@/utils/fetchCharacter";
 
 const DisplayCharacter = () => {
-  const [id, setId] = useState<number>();
+  const [id, setId] = useState<number>(0);
   const [load, setLoad] = useAtom(LoadingAtom);
   const { data, isLoading, isFetching, isFetched, isSuccess } = useQuery({
     queryKey: ["hero"],
-    queryFn: async () => {
-      await new Promise<void>((resolve) => setTimeout(resolve, 1500));
-
-      const res = await axios.get(`https://swapi.dev/api/people/${id}`);
-
-      const data = res.data as Hero;
-
-      return data;
-    },
+    queryFn: () => fetchCharacter(id),
     refetchOnWindowFocus: false,
   });
 
